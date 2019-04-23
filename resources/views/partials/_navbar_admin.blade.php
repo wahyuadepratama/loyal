@@ -1,7 +1,7 @@
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-    <a class="navbar-brand brand-logo" href="/admin"><img src="{{asset('storage/logo/loyal.png')}}" alt="logo" style="height:10%;width:40%"/></a>
-    <a class="navbar-brand brand-logo-mini" href="/admin"><img src="{{asset('storage/logo/loyal.png')}}" alt="logo" style="height:100%"/></a>
+    <a class="navbar-brand brand-logo" href="/admin"><img src="{{asset('storage/logo/logo.jpeg')}}" alt="logo" style="height:10%;width:25%;border-radius:70%"/></a>
+    <a class="navbar-brand brand-logo-mini" href="/admin"><img src="{{asset('storage/logo/logo.jpeg')}}" alt="logo" style="height:100%;border-radius:70%"/></a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-stretch">
     <div class="search-field d-none d-md-block">

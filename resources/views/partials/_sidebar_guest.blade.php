@@ -2,8 +2,8 @@
 <nav id="sidebar">
     <div class="sidebar-header" style="background-color:#198ae3">
       <center>
-        <div style="background-color:#fafafa;width: 150px;height: 150px;border-radius:50%">
-          <img src="{{asset('storage/logo/loyal.png')}}" width="100%" style="margin-top:25%">
+        <div style="background-color:#198ae3;width: 150px;height: 150px;border-radius:50%">
+          <img src="{{asset('storage/logo/logo.jpeg')}}" width="100%" style="margin-top:1%; border-radius:50%">
         </div>
       </center>
     </div>

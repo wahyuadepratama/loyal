@@ -22,7 +22,7 @@
             </div><br>
           @endif
           <div class="page-header">
-            <h3 class="page-title">
+            <h3 class="page-title" style="font-size: 85%">
               <span class="page-title-icon bg-gradient-info text-white mr-2">
                 <i class="mdi mdi-home"></i>
               </span>
