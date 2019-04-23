@@ -13,7 +13,7 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
+                                <img src="{{ asset('storage/logo/loyal.png') }}" style="width:100%; max-width:150px;">
                             </td>
                             <td>
                                 Invoice #{{ $data->order->id }}<br>
@@ -100,17 +100,31 @@
                   @endif
                 </td>
 
-                <td style="text-align:center">
-                  USG 78
-                </td>
+                @if($data->order->ray == 2)
+                  <td style="text-align:center">
+                    @php $sing = $data->order->package->price_2_ray * $sgd; @endphp SGD {{number_format(($sing),2,',','.')}}
+                  </td>
 
-                <td style="text-align:center">
-                  RM 108
-                </td>
+                  <td style="text-align:center">
+                    @php $rm = $data->order->package->price_2_ray * $myr; @endphp RM {{number_format(($rm),2,',','.')}}
+                  </td>
 
-                <td style="text-align:center">
-                  Rp. 121.000
-                </td>
+                  <td style="text-align:center">
+                    @php $rupiah = $data->order->package->price_2_ray * $idr; @endphp Rp {{number_format(($rupiah),0,',','.')}}
+                  </td>
+                @else
+                  <td style="text-align:center">
+                    @php $sing = $data->order->package->price_3_ray * $sgd; @endphp SGD {{number_format(($sing),2,',','.')}}
+                  </td>
+
+                  <td style="text-align:center">
+                    @php $rm = $data->order->package->price_3_ray * $myr; @endphp RM {{number_format(($rm),2,',','.')}}
+                  </td>
+
+                  <td style="text-align:center">
+                    @php $rupiah = $data->order->package->price_3_ray * $idr; @endphp Rp {{number_format(($rupiah),0,',','.')}}
+                  </td>
+                @endif
             </tr>
         </table><br><br>
         <table>

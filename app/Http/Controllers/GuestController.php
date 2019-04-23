@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Package;
 use App\Models\Order;
+use App\Models\Gallery;
 use Carbon\Carbon;
 
 class GuestController extends Controller
@@ -119,5 +120,10 @@ class GuestController extends Controller
       ]);
 
       return redirect('order-success/'. $order->id);
+    }
+
+    public function gallery(){
+      $gallery = Gallery::all();
+      return view('guest/gallery')->with('gallery', $gallery);
     }
 }

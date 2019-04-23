@@ -25,8 +25,8 @@ Route::post('/private/order/{ray}/{id}', 'GuestController@saveOrderPrivate');
 Route::get('/family', function(){return view('guest.coming_soon');});
 Route::get('/island', function(){return view('guest.coming_soon');});
 Route::get('/adventure', function(){return view('guest.coming_soon');});
-Route::get('/about', function(){return view('guest.about');});
-Route::get('/gallery', function(){return view('guest.gallery');});
+Route::get('/about', function(){return view('guest.coming_soon');});
+Route::get('/gallery', 'GuestController@gallery');
 
 Auth::routes();
 
@@ -46,3 +46,8 @@ Route::get('admin/driver/destroy/{id}', 'AdminController@destroyDriver');
 
 Route::get('admin/travel', 'AdminController@travel');
 Route::get('admin/travel/print/{id}', 'AdminController@printTravel');
+
+Route::get('admin/gallery', 'AdminController@indexGallery');
+Route::post('admin/gallery/store', 'AdminController@storeGallery');
+Route::get('admin/gallery/destroy/{id}', 'AdminController@destroyGallery');
+Route::post('admin/gallery/update/{id}', 'AdminController@updateGallery');

@@ -27,7 +27,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="data">
                       <thead>
                         <tr>
                           <th>
@@ -71,7 +71,7 @@
                             @endif
                           </td>
                           <td>
-                            <button type="button" class="btn btn-sm btn-gradient-danger btn-icon-text" onclick="window.open('{{ url('admin/payment/print/'. $data->id_order) }}')">Cetak <i class="mdi mdi-printer btn-icon-append"></i></button>                            
+                            <button type="button" class="btn btn-sm btn-gradient-danger btn-icon-text" onclick="window.open('{{ url('admin/payment/print/'. $data->id_order) }}')">Cetak <i class="mdi mdi-printer btn-icon-append"></i></button>
                           </td>
                         </tr>
                         @endforeach
@@ -100,7 +100,15 @@
   <!-- endinject -->
 
   <!-- Plugin js for this page-->
-
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" charset="utf-8"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#data').DataTable({
+        dom: '<"clear"f><"clear">',
+      });
+    } );
+  </script>
   <!-- End plugin js for this page-->
 
   <!-- inject:js -->

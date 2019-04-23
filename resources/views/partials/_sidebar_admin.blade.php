@@ -19,10 +19,22 @@
         <i class="mdi mdi-home menu-icon"></i>
       </a>
     </li>
+    <li class="nav-item {{ Request::is('admin/driver','admin/driver/*') ? 'active' : '' }}">
+      <a class="nav-link" href="#" onclick="location.href = '{{ url('admin/driver') }}'">
+        <span class="menu-title">Driver</span>
+        <i class="mdi mdi-account-multiple menu-icon"></i>
+      </a>
+    </li>
     <li class="nav-item {{ Request::is('admin/order', 'admin/order/*') ? 'active' : '' }}">
       <a class="nav-link" href="#" onclick="location.href = '{{ url('admin/order') }}'">
         <span class="menu-title">Pemesanan</span>
         <i class="mdi mdi-car menu-icon"></i>
+      </a>
+    </li>
+    <li class="nav-item {{ Request::is('admin/travel','admin/travel/*') ? 'active' : '' }}">
+      <a class="nav-link" href="#" onclick="location.href = '{{ url('admin/travel') }}'">
+        <span class="menu-title">Perjalanan</span>
+        <i class="mdi mdi-trending-up menu-icon"></i>
       </a>
     </li>
     <li class="nav-item {{ Request::is('admin/payment','admin/payment/*') ? 'active' : '' }}">
@@ -31,16 +43,10 @@
         <i class="mdi mdi-wallet menu-icon"></i>
       </a>
     </li>
-    <li class="nav-item {{ Request::is('admin/driver','admin/driver/*') ? 'active' : '' }}">
-      <a class="nav-link" href="#" onclick="location.href = '{{ url('admin/driver') }}'">
-        <span class="menu-title">Driver</span>
-        <i class="mdi mdi-account-multiple menu-icon"></i>
-      </a>
-    </li>
-    <li class="nav-item {{ Request::is('admin/travel','admin/travel/*') ? 'active' : '' }}">
-      <a class="nav-link" href="#" onclick="location.href = '{{ url('admin/travel') }}'">
-        <span class="menu-title">Perjalanan</span>
-        <i class="mdi mdi-trending-up menu-icon"></i>
+    <li class="nav-item {{ Request::is('admin/gallery','admin/gallery/*') ? 'active' : '' }}">
+      <a class="nav-link" href="#" onclick="location.href = '{{ url('admin/gallery') }}'">
+        <span class="menu-title">Gallery</span>
+        <i class="mdi mdi-home menu-icon"></i>
       </a>
     </li>
 

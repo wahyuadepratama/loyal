@@ -41,7 +41,7 @@
                     transform-origin: 50% 65%;
                     transition: transform 10s, filter 6s ease-in-out;
                     filter: brightness(80%);
-                    height: 250px;
+                    height: 350px;                    
                   }.effect:hover{
                     filter: brightness(100%);
                     transform: scale(2);
@@ -55,6 +55,7 @@
                     font-size: 45px;
                   }@media only screen and (max-width: 768px) {
                     .centered{
+                      top: 30%;
                       font-size:25px;
                     }
                     .explaination{

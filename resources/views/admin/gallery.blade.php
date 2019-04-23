@@ -3,6 +3,8 @@
 
 @include('partials/_head_admin')
 
+<script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
+
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar -->
@@ -24,18 +26,18 @@
               <span class="page-title-icon bg-gradient-info text-white mr-2">
                 <i class="mdi mdi-home"></i>
               </span>
-              Driver
+              Gallery
             </h3>
-            <a href="#" data-toggle="modal" data-target="#add_driver" class="btn btn-sm btn-gradient-info">+ Tambah Driver</a>
+            <a href="#" data-toggle="modal" data-target="#add_gallery" class="btn btn-sm btn-gradient-info">+ Tambah Gallery</a>
           </div>
           <div class="row">
             <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
                   <!-- Modal Avatar -->
-                  <div class="modal fade" id="add_driver" tabindex="-1" role="dialog" aria-labelledby="avatar" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <form action="{{ url('admin/driver/store') }}" method="post" enctype="multipart/form-data">
+                  <div class="modal fade" id="add_gallery" tabindex="-1" role="dialog" aria-labelledby="avatar" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                      <form action="{{ url('admin/gallery/store') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal-content">
                           <div class="modal-header">
@@ -45,16 +47,16 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            <input type="text" name="name" class="form-control" placeholder="Nama">
-                            <input type="text" name="type_car" class="form-control" placeholder="Jenis Kendaraan">
-                            <input type="text" name="plate_car" class="form-control" placeholder="Plat No Kendaraan">
-                            <input type="text" name="phone" class="form-control" placeholder="No Hp">
-                            <input type="text" name="email" class="form-control" placeholder="Email">
-                            <input type="file" name="photo" value="Upload Avatar" class="form-control">
+                            <input type="text" name="title" class="form-control" placeholder="Judul" required><br>
+                            <input type="file" name="photo" value="Upload Image" class="form-control" required><br>
+                            <textarea name="editor1" rows="8" cols="80" required></textarea>
+                            <script>
+                                    CKEDITOR.replace( 'editor1' );
+                            </script>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success">Upload</button>
+                            <button type="submit" class="btn btn-success">Tambah</button>
                           </div>
                         </div>
                       </form>
@@ -67,70 +69,56 @@
                       <thead>
                         <tr>
                           <th>
-                            Nama
+                            Photo
                           </th>
                           <th>
-                            Jenis Kendaraan
+                            Title
                           </th>
                           <th>
-                            Plat Kendaraan
+                            Description
                           </th>
                           <th>
-                            No.Handphone
-                          </th>
-                          <th>
-                            Email
-                          </th>
-                          <th>
-                            Aksi
+                            Action
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($driver as $data)
+                        @foreach($gallery as $data)
                         <tr>
                           <td>
-                            <img src="{{asset('storage/driver/'. $data->photo)}}" class="mr-2" alt="image">
-                            {{ $data->name }}
+                            <img src="{{asset('storage/gallery/'. $data->photo)}}" alt="image">
                           </td>
                           <td>
-                            {{ $data->type_car }}
+                            {{ $data->title }}
                           </td>
                           <td>
-                            {{ $data->plate_car }}
+                            {!! $data->description !!}
                           </td>
                           <td>
-                            {{ $data->phone }}
-                          </td>
-                          <td>
-                            {{ $data->email }}
-                          </td>
-                          <td>
-                            <a href="/admin/driver/destroy/{{ $data->id }}" onclick="return confirm('Hapus Driver Ini?')" class="btn btn-sm btn-danger">Destroy</a>
-                            <a href="#" class="btn btn-sm btn-warning"data-toggle="modal" data-target="#edit_driver{{ $data->id }}">Edit</a>
+                            <a href="/admin/gallery/destroy/{{ $data->id }}" onclick="return confirm('Hapus Postingan Ini?')" class="btn btn-sm btn-danger">Destroy</a>
+                            <a href="#" class="btn btn-sm btn-warning"data-toggle="modal" data-target="#edit_gallery{{ $data->id }}">Edit</a>
                             <!-- Modal Avatar -->
-                            <div class="modal fade" id="edit_driver{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="avatar" aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                <form action="{{ url('admin/driver/update/'. $data->id) }}" method="post" enctype="multipart/form-data">
+                            <div class="modal fade" id="edit_gallery{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="avatar" aria-hidden="true">
+                              <div class="modal-dialog modal-lg" role="document">
+                                <form action="{{ url('admin/gallery/update/'. $data->id) }}" method="post" enctype="multipart/form-data">
                                   {{ csrf_field() }}
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="avatar">Edit Driver</h5>
+                                      <h5 class="modal-title" id="avatar">Edit Postingan</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      <input type="text" name="name" class="form-control" value="{{ $data->name }}">
-                                      <input type="text" name="type_car" class="form-control" value="{{ $data->type_car }}">
-                                      <input type="text" name="plate_car" class="form-control" value="{{ $data->plate_car }}">
-                                      <input type="text" name="phone" class="form-control" value="{{ $data->phone }}">
-                                      <input type="text" name="email" class="form-control" value="{{ $data->email }}">
-                                      <input type="file" name="photo" value="Upload Avatar" class="form-control">
+                                      <input type="text" name="title" class="form-control" placeholder="Judul" value="{{ $data->title }}"><br>
+                                      <textarea name="editor{{ $data->id }}" rows="8" cols="80" required>{!! $data->description !!}</textarea>
+                                      <script>
+                                              CKEDITOR.replace( 'editor{{ $data->id }}' );
+                                      </script>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn btn-success">Upload</button>
+                                      <button type="submit" class="btn btn-success">Save</button>
                                     </div>
                                   </div>
                                 </form>

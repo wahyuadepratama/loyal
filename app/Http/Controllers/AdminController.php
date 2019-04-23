@@ -6,6 +6,7 @@ use Intervention\Image\Facades\Image as Image;
 use Illuminate\Http\Request;
 use App\Models\DriverOrder;
 use App\Models\Driver;
+use App\Models\Gallery;
 use App\Models\Order;
 use Carbon\Carbon;
 
@@ -64,7 +65,28 @@ class AdminController extends Controller
 
     public function printPayment($id){
       $data = DriverOrder::where('id_order', $id)->first();
-      return view('admin/print_payment')->with('data', $data);
+
+      $endpoint = 'latest';
+      $access_key = 'ccc21146f20bc34afd9f6c4a939129df';
+
+      // Initialize CURL:
+      $ch = curl_init('http://data.fixer.io/api/'.$endpoint.'?access_key='.$access_key.'');
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+      // Store the data:
+      $json = curl_exec($ch);
+      curl_close($ch);
+
+      // Decode JSON response:
+      $exchangeRates = json_decode($json, true);
+
+      // Access the exchange rate values, e.g. GBP:
+      $eur = 1/$exchangeRates['rates']['USD'];
+      $sgd = $eur * $exchangeRates['rates']['SGD'];
+      $myr = $eur * $exchangeRates['rates']['MYR'];
+      $idr = $eur * $exchangeRates['rates']['IDR'];
+
+      return view('admin/print_payment')->with('data', $data)->with('myr', $myr)->with('idr', $idr)->with('sgd', $sgd);
     }
 
     public function driver(){
@@ -95,7 +117,7 @@ class AdminController extends Controller
         $small          = 'storage/driver/' . $filename;
         $createSmall   = Image::make($thumbnail)->resize(700, 700)->save($small);
       }else{
-        $filename = $driver->photo;
+        $filename = 'github.png';
       }
 
       Driver::create([
@@ -161,6 +183,81 @@ class AdminController extends Controller
 
     public function printTravel($id){
       $data = DriverOrder::where('id_order', $id)->first();
-      return view('admin/print_travel')->with('data', $data);
+
+      $endpoint = 'latest';
+      $access_key = 'ccc21146f20bc34afd9f6c4a939129df';
+
+      // Initialize CURL:
+      $ch = curl_init('http://data.fixer.io/api/'.$endpoint.'?access_key='.$access_key.'');
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+      // Store the data:
+      $json = curl_exec($ch);
+      curl_close($ch);
+
+      // Decode JSON response:
+      $exchangeRates = json_decode($json, true);
+
+      // Access the exchange rate values, e.g. GBP:
+      $eur = 1/$exchangeRates['rates']['USD'];
+      $sgd = $eur * $exchangeRates['rates']['SGD'];
+      $myr = $eur * $exchangeRates['rates']['MYR'];
+      $idr = $eur * $exchangeRates['rates']['IDR'];
+
+      return view('admin/print_travel')->with('data', $data)->with('myr', $myr)->with('idr', $idr)->with('sgd', $sgd);
+    }
+
+    public function indexGallery(){
+      $gallery = Gallery::all();
+      return view('admin/gallery')->with('gallery', $gallery);
+    }
+
+    public function storeGallery(Request $request){
+      $this->validate($request,[
+        'title' => 'required',
+        'photo' => 'required',
+        'editor1' => 'required'
+      ]);
+
+      if (isset($request->photo)) {
+        $thumbnail      = $request->file('photo');
+        $filename      = 'driver_' . str_slug($request->photo).'_'.time() . '.' . $thumbnail->getClientOriginalExtension();
+        $small          = 'storage/gallery/' . $filename;
+        $createSmall   = Image::make($thumbnail)->resize(800, 600)->save($small);
+      }else{
+        $filename = 'air.jpg';
+      }
+
+      Gallery::create([
+        'title' => $request->title,
+        'photo' => $filename,
+        'description' => $request->editor1
+      ]);
+
+      session()->flash('message', 'Berhasil menambah postingan baru!');
+      return back();
+    }
+
+    public function destroyGallery($id){
+      $gallery = Gallery::where('id', $id)->first();
+      if(file_exists(public_path('storage/gallery/'. $gallery->photo))){
+        unlink(public_path('storage/gallery/'. $gallery->photo));
+      }
+
+      Gallery::destroy($id);
+
+      session()->flash('message', 'Berhasil menghapus postingan!');
+      return back();
+    }
+
+    public function updateGallery(Request $request, $id){
+      $editor = 'editor' . $id;
+      $gallery = Gallery::where('id', $id)->first();
+      $gallery->title = $request->title;
+      $gallery->description = $request->$editor;
+      $gallery->save();
+
+      session()->flash('message', 'Berhasil mengubah postingan!');
+      return back();
     }
 }
