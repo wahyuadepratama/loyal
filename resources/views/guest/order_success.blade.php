@@ -39,7 +39,7 @@
                   <h3>Dear, {{ $order->customer }}</h3>
                   <p style="font-size:20px;color:#5C5C5C;">We have processed your order, we will immediately find a driver for you and contact your phone and email.</p>
                   <p style="font-size:20px;color:#5C5C5C;">Kami sudah memproses pesanan anda, kami akan segera mencarikan driver dan menghubungi anda melalui telepon dan email.</p>
-                  <b style="font-size:20px;color:#5C5C5C;">Contact Admin: 08xxxxx</b>
+                  <b style="font-size:20px;color:#5C5C5C;">Contact Admin: <a href="https://wa.me/6281277872475">+6281277872475</a> or <a href="https://wa.me/6281364748491">+6281364748491</a> </b>
                   </div><br><br>
 
             </div>
