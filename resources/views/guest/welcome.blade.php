@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{{asset('theme/landing/style5.css')}}">
+    <link rel="shortcut icon" href="{{ asset('storage/logo/icon.png') }}">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -41,7 +42,7 @@
                     transform-origin: 50% 65%;
                     transition: transform 10s, filter 6s ease-in-out;
                     filter: brightness(80%);
-                    height: 350px;                    
+                    height: 350px;
                   }.effect:hover{
                     filter: brightness(100%);
                     transform: scale(2);

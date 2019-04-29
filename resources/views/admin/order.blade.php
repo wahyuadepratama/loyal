@@ -57,7 +57,7 @@
             Belum ada pesanan!
           </div><br>
           @endif
-          
+
             @foreach($order as $result)
             <div class="row">
               <div class="col-md-12 grid-margin stretch-card">
@@ -67,13 +67,12 @@
                       @if($result->package->name == 'Trip')
                         <h5>#{{ $result->id }} ({{ $result->package->route_start }} - {{ $result->package->destination }})  </h5><br><br>
                       @else
-                        <h5>#{{ $result->id }} ({{ $result->package->name }})  </h5><br>
+                        <h5>#{{ $result->id }} ({{ $result->package->name }} {{$result->duration}} day)  </h5><br>
                       @endif
 
                     <div class="row">
                       <div class="col-md-2">
                         <small><b>{{ $result->customer }}</b></small><br>
-
                       </div>
                       <div class="col-md-2">
 
@@ -88,9 +87,9 @@
                       <div class="col-md-2">
 
                           @if($result->ray == 2)
-                            <small><b>Price ${{ $result->package->price_2_ray }}</b> ({{ $result->ray }} Ray)</small><br><br>
+                            <small><b>Price ${{ $result->duration * $result->package->price_2_ray }}</b> ({{ $result->ray }} Ray)</small><br><br>
                           @else
-                            <small><b>Price ${{ $result->package->price_3_ray }}</b> ({{ $result->ray }} Ray)</small><br><br>
+                            <small><b>Price ${{ $result->duration * $result->package->price_3_ray }}</b> ({{ $result->ray }} Ray)</small><br><br>
                           @endif
 
                       </div>

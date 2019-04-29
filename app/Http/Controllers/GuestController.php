@@ -104,7 +104,8 @@ class GuestController extends Controller
       $this->validate($request,[
         'name' => 'required',
         'email' => 'required|email',
-        'phone' => 'required'
+        'phone' => 'required',
+        'duration' => 'required',
       ]);
 
       $date = Carbon::parse($request->date)->format('Y-m-d');
@@ -116,6 +117,7 @@ class GuestController extends Controller
         'phone' => $request->phone,
         'email' => $request->email,
         'date' => $date,
+        'duration' => $request->duration,
         'created_at' => Carbon::now()->setTimezone('Asia/Jakarta')
       ]);
 

@@ -63,7 +63,7 @@
                             @if($data->order->package->name == 'Trip')
                               {{ $data->order->package->route_start }} - {{ $data->order->package->destination }}
                             @else
-                              {{ $data->order->package->name }}
+                              {{ $data->order->package->name }} {{ $data->order->duration }} day
                             @endif
                           </td>
                           <td>
@@ -73,7 +73,7 @@
                             @php echo \Carbon\Carbon::parse($data->order->date)->format('l, d F Y'); @endphp
                           </td>
                           <td>
-                            <button type="button" class="btn btn-sm btn-gradient-danger btn-icon-text" onclick="window.open('{{ url('admin/travel/print/'. $data->id_order) }}')">Cetak <i class="mdi mdi-printer btn-icon-append"></i></button>                                                        
+                            <a href="/admin/travel/print/{{$data->id_order}}" class="btn btn-sm btn-gradient-danger btn-icon-text">Cetak <i class="mdi mdi-printer btn-icon-append"></i></a>
                           </td>
                         </tr>
                         @endforeach

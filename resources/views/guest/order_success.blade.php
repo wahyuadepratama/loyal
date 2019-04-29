@@ -13,6 +13,7 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{{asset('theme/landing/style5.css')}}">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="{{ asset('storage/logo/icon.png') }}">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -37,7 +38,7 @@
                   <img src="{{ asset('storage/success.png')}}" width="17%">
                   <h3>Dear, {{ $order->customer }}</h3>
                   <p style="font-size:20px;color:#5C5C5C;">We have processed your order, we will immediately find a driver for you and contact your phone and email.</p>
-                  <p style="font-size:20px;color:#5C5C5C;">Kami sudah memproses pesanan anda, kami akan segera mencarikan driver dan menghubungimu melalui telepon dan email.</p>
+                  <p style="font-size:20px;color:#5C5C5C;">Kami sudah memproses pesanan anda, kami akan segera mencarikan driver dan menghubungi anda melalui telepon dan email.</p>
                   <b style="font-size:20px;color:#5C5C5C;">Contact Admin: 08xxxxx</b>
                   </div><br><br>
 

@@ -60,18 +60,18 @@
                             @if($data->order->package->name == 'Trip')
                               {{ $data->order->package->route_start }} - {{ $data->order->package->destination }}
                             @else
-                              {{ $data->order->package->name }}
+                              {{ $data->order->package->name }} {{ $data->order->duration }} day
                             @endif
                           </td>
                           <td>
                             @if($data->order->ray == 2)
-                              <b>${{ $data->order->package->price_2_ray }}</b>
+                              <b>${{ $data->order->duration * $data->order->package->price_2_ray }}</b>
                             @else
-                              <b>${{ $data->order->package->price_3_ray }}</b>
+                              <b>${{ $data->order->duration * $data->order->package->price_3_ray }}</b>
                             @endif
                           </td>
                           <td>
-                            <button type="button" class="btn btn-sm btn-gradient-danger btn-icon-text" onclick="window.open('{{ url('admin/payment/print/'. $data->id_order) }}')">Cetak <i class="mdi mdi-printer btn-icon-append"></i></button>
+                            <a href="{{ url('admin/payment/print/'. $data->id_order) }}" class="btn btn-sm btn-gradient-danger btn-icon-text">Cetak <i class="mdi mdi-printer btn-icon-append"></i></button>
                           </td>
                         </tr>
                         @endforeach

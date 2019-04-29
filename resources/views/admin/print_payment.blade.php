@@ -38,6 +38,14 @@
                                 {{ $data->driver->name }}<br>
                             </td>
                         </tr>
+                        @if($data->order->package->name == "Rental")
+                        <tr>
+                          <td>
+                            <b>Duration</b><br>
+                            {{ $data->order->duration }} Day
+                          </td>
+                        </tr>
+                        @endif
                     </table>
                 </td>
             </tr>
@@ -94,35 +102,35 @@
 
                 <td style="text-align:center">
                   @if($data->order->ray == 2)
-                    <b>${{ $data->order->package->price_2_ray }}</b>
+                    <b>${{ $data->order->duration * $data->order->package->price_2_ray }}</b>
                   @else
-                    <b>${{ $data->order->package->price_3_ray }}</b>
+                    <b>${{ $data->order->duration * $data->order->package->price_3_ray }}</b>
                   @endif
                 </td>
 
                 @if($data->order->ray == 2)
                   <td style="text-align:center">
-                    @php $sing = $data->order->package->price_2_ray * $sgd; @endphp SGD {{number_format(($sing),2,',','.')}}
+                    @php $sing = $data->order->duration * $data->order->package->price_2_ray * $sgd; @endphp SGD {{number_format(($sing),2,',','.')}}
                   </td>
 
                   <td style="text-align:center">
-                    @php $rm = $data->order->package->price_2_ray * $myr; @endphp RM {{number_format(($rm),2,',','.')}}
+                    @php $rm = $data->order->duration * $data->order->package->price_2_ray * $myr; @endphp RM {{number_format(($rm),2,',','.')}}
                   </td>
 
                   <td style="text-align:center">
-                    @php $rupiah = $data->order->package->price_2_ray * $idr; @endphp Rp {{number_format(($rupiah),0,',','.')}}
+                    @php $rupiah = $data->order->duration * $data->order->package->price_2_ray * $idr; @endphp Rp {{number_format(($rupiah),0,',','.')}}
                   </td>
                 @else
                   <td style="text-align:center">
-                    @php $sing = $data->order->package->price_3_ray * $sgd; @endphp SGD {{number_format(($sing),2,',','.')}}
+                    @php $sing = $data->order->duration * $data->order->package->price_3_ray * $sgd; @endphp SGD {{number_format(($sing),2,',','.')}}
                   </td>
 
                   <td style="text-align:center">
-                    @php $rm = $data->order->package->price_3_ray * $myr; @endphp RM {{number_format(($rm),2,',','.')}}
+                    @php $rm = $data->order->duration * $data->order->package->price_3_ray * $myr; @endphp RM {{number_format(($rm),2,',','.')}}
                   </td>
 
                   <td style="text-align:center">
-                    @php $rupiah = $data->order->package->price_3_ray * $idr; @endphp Rp {{number_format(($rupiah),0,',','.')}}
+                    @php $rupiah = $data->order->duration * $data->order->package->price_3_ray * $idr; @endphp Rp {{number_format(($rupiah),0,',','.')}}
                   </td>
                 @endif
             </tr>

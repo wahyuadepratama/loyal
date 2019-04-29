@@ -13,6 +13,7 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{{asset('theme/landing/style5.css')}}">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="{{ asset('storage/logo/icon.png') }}">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -33,6 +34,17 @@
 
             <div class="container">
               <h5>Order Private Package ({{$ray}} Ray)</h5><br>
+
+              @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li> <small>{{ $error }}</small> </li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
+
               <form method="post" action="{{ url('private/order/'.$ray.'/'.$trip->id) }}">
                 {{ csrf_field() }}
                 <div class="form-group">
@@ -59,6 +71,11 @@
                   </script>
                   <small class="form-text text-muted">This date is when you need to order this trip.</small>
                 </div>
+                <div class="form-group">
+                  <label>Duration Order</label>
+                  <input type="number" name="duration" class="form-control" style="width: 276px !important">
+                  <small class="form-text text-muted">Duration rental (day)</small>
+                </div><br>
                 <button type="submit" class="btn btn-warning form-control">Order Now</button>
               </form>
             </div>
