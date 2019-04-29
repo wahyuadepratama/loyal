@@ -32,7 +32,7 @@
             @include('partials/_navbar_guest')
 
             <div class="container">
-              <h5>Paket Rental (3 Ray)</h5>
+              <h5>Paket Rental 3 Ray (1-5 Person)</h5>
               <table class="table table-hover">
                 <thead>
                   <tr>
@@ -61,7 +61,7 @@
             </div>
 
             <div class="container" style="margin-top:7%">
-              <h5>Paket Rental (2 Ray)</h5>
+              <h5>Paket Rental 2 Ray (1-3 Person)</h5>
               <table class="table table-hover">
                 <thead>
                   <tr>
