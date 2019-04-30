@@ -89,6 +89,16 @@
               </table>
             </div>
 
+            <div class="container" style="margin-top:7%">
+              <h6>Keterangan</h6>
+              <ul>
+                <li>Lama Pemakaian 12 Jam</li>
+                <li>Diluar Bahan Bakar</li>
+                <li>Tidak Termasuk Tiket Masuk Wisata dan Parkir</li>
+                <li>Akomodasi Driver Jika Lebih 1 Hari dan Konsumsi Driver Ditanggung Penyewa</li>
+              </ul>
+            </div><br>
+
             @include('partials/_footer_guest')
 
         </div>

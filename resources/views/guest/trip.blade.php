@@ -94,6 +94,13 @@
               </table>
             </div>
 
+            <div class="container" style="margin-top:7%">
+              <h6>Keterangan</h6>
+              <ul>
+                <li>Free Snack dan Mineral Water</li>                
+              </ul>
+            </div><br>
+
             @include('partials/_footer_guest')
 
         </div>

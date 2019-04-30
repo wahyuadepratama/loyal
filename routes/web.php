@@ -25,7 +25,7 @@ Route::post('/private/order/{ray}/{id}', 'GuestController@saveOrderPrivate');
 Route::get('/family', function(){return view('guest.coming_soon');});
 Route::get('/island', function(){return view('guest.coming_soon');});
 Route::get('/adventure', function(){return view('guest.coming_soon');});
-Route::get('/about', function(){return view('guest.coming_soon');});
+Route::get('/about', function(){return view('guest.about');});
 Route::get('/gallery', 'GuestController@gallery');
 
 Auth::routes();

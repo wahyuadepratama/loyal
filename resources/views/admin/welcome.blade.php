@@ -23,7 +23,7 @@
             </h3>
           </div>
           <div class="row">
-            <div class="col-md-4 stretch-card grid-margin">
+            <div class="col-md-4 stretch-card grid-margin" onclick="location.href='/admin/order'">
               <div class="card bg-gradient-danger card-img-holder text-white">
                 <div class="card-body">
                   <img src="{{asset('theme/images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image"/>
@@ -35,7 +35,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4 stretch-card grid-margin">
+            <div class="col-md-4 stretch-card grid-margin" onclick="location.href='/admin/travel'">
               <div class="card bg-gradient-info card-img-holder text-white">
                 <div class="card-body">
                   <img src="{{asset('theme/images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image"/>
@@ -46,7 +46,7 @@
                   <h6 class="card-text">Total Perjalanan</h6>
                 </div>
               </div>
-            </div>            
+            </div>
           </div>
         </div>
         <!-- content-wrapper ends -->
